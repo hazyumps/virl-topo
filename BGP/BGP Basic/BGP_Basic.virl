@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <node name="AMSTERDAM" type="SIMPLE" subtype="IOSv" location="326,92" coordinate="48.07807894349861,-115.6201171875">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname AMSTERDAM
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface G0/1
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface G0/2
+ ip address 192.168.13.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="ISP1" type="SIMPLE" subtype="IOSv" location="79,390" coordinate="42.811521745097885,-120.849609375">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface g0/1
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="ISP2" type="SIMPLE" subtype="IOSv" location="597,391" coordinate="42.71473218539457,-110.0830078125">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.240
+!
+interface g0/1
+ ip address 192.168.13.3 255.255.255.0
+ duplex auto
+ speed auto
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]">
+        <extensions>
+            <entry key="description" type="String">Link from R1 port FastEthernet0/0 to R2 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from R1 port FastEthernet1/0 to R3 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+</topology>

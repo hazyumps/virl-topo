@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">flat</entry>
+    </extensions>
+    <node name="Hogan" type="SIMPLE" subtype="IOSv" location="145,140">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Hogan
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface g0/1
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="Piper" type="SIMPLE" subtype="IOSv" location="313,140">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Piper
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface g0/1
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface g0/2
+ ip address 192.168.23.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="Undertatker" type="SIMPLE" subtype="IOSv" location="491,138">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="config" type="String">!
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Undertaker
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface g0/1
+ ip address 192.168.23.3 255.255.255.0
+ duplex auto
+ speed auto
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+!
+!
+end
+</entry>
+            <entry key="description" type="String">Router c3600</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]">
+        <extensions>
+            <entry key="description" type="String">Link from R1 port FastEthernet0/0 to R2 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from R2 port FastEthernet1/0 to R3 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+</topology>

@@ -1,0 +1,38 @@
+!
+hostname NYC
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+ ip ospf network point-to-point
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.12.2 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key cisco
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.23.2 255.255.255.0
+ ip ospf hello-interval 5
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 22.22.22.22
+ network 2.2.2.2 0.0.0.0 area 0
+ network 192.168.0.0 0.0.255.255 area 0
+!

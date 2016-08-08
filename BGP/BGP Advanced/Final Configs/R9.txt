@@ -1,0 +1,43 @@
+!
+hostname R9
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 9.9.9.9 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.30 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.109.9 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.89.9 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 9.9.9.9
+ network 9.9.9.9 0.0.0.0 area 0
+ network 192.168.89.0 0.0.0.255 area 0
+!
+router bgp 20
+ bgp log-neighbor-changes
+ bgp confederation identifier 300
+ bgp confederation peers 10 
+ redistribute connected
+ neighbor 8.8.8.8 remote-as 20
+ neighbor 8.8.8.8 update-source Loopback0
+ neighbor 192.168.109.10 remote-as 400
+!

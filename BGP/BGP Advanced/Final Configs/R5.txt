@@ -1,0 +1,68 @@
+!
+hostname R5
+!
+!
+!
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.27 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.58.5 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.56.5 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 192.168.45.5 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 5.5.5.5
+ network 5.5.5.5 0.0.0.0 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+ network 192.168.58.0 0.0.0.255 area 0
+!
+router bgp 10
+ bgp log-neighbor-changes
+ bgp confederation identifier 300
+ bgp confederation peers 20 
+ redistribute ospf
+ neighbor 4.4.4.4 remote-as 10
+ neighbor 4.4.4.4 update-source Loopback0
+ neighbor 8.8.8.8 remote-as 20
+ neighbor 8.8.8.8 ebgp-multihop 5
+ neighbor 8.8.8.8 update-source Loopback0
+ neighbor 192.168.56.6 remote-as 200
+ neighbor 192.168.56.6 route-map DENY_R1_Lo1 out
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!         
+route-map DENY_R1_Lo1 deny 10
+ match ip address 20
+!
+route-map DENY_R1_Lo1 permit 20
+!
+!
+access-list 20 permit 172.16.1.0 0.0.0.255
+!

@@ -1,0 +1,29 @@
+!
+hostname Yoda
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 172.16.1.56 255.255.255.0
+ shutdown 
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.34.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 4
+ bgp log-neighbor-changes
+ network 4.4.4.0 mask 255.255.255.0
+ network 192.168.34.0
+ neighbor 192.168.34.3 remote-as 3
+!

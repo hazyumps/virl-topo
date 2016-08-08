@@ -1,0 +1,47 @@
+!
+hostname R6
+!
+!
+!
+!
+interface Loopback0
+ ip address 6.6.6.6 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.26 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.46.6 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.56.6 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 192.168.67.6 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 200
+ network 6.0.0.0
+ network 192.168.67.0
+!
+router bgp 200
+ bgp log-neighbor-changes
+ redistribute connected
+ neighbor 7.7.7.7 remote-as 200
+ neighbor 7.7.7.7 update-source Loopback0
+ neighbor 192.168.46.4 remote-as 300
+ neighbor 192.168.56.5 remote-as 300
+!

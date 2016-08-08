@@ -1,0 +1,55 @@
+!
+hostname R7
+!
+!
+!
+interface Loopback0
+ ip address 7.7.7.7 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.25 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.117.7 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.67.7 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 200
+ network 7.0.0.0
+ network 192.168.67.0
+!
+router bgp 200
+ bgp log-neighbor-changes
+ redistribute connected
+ neighbor 6.6.6.6 remote-as 200
+ neighbor 6.6.6.6 update-source Loopback0
+ neighbor 192.168.117.11 remote-as 400
+ neighbor 192.168.117.11 password secure
+ neighbor 192.168.117.11 route-map PATH_THROUGH_AS400 in
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip prefix-list PATH_THROUGH_AS400_PREFIX seq 5 deny 172.16.1.0/24
+ip prefix-list PATH_THROUGH_AS400_PREFIX seq 10 permit 0.0.0.0/0 le 32
+!
+route-map PATH_THROUGH_AS400 permit 10
+ match ip address prefix-list PATH_THROUGH_AS400_PREFIX
+ set local-preference 500
+!

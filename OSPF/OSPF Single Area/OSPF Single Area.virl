@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <node name="Chicago" type="SIMPLE" subtype="IOSv" location="391,207">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname Chicago&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 1.1.1.1 255.255.255.0&#xD;
+!&#xD;
+interface G0/1&#xD;
+ ip address 192.168.12.1 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+interface G0/2&#xD;
+ ip address 192.168.13.1 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="NYC" type="SIMPLE" subtype="IOSv" location="250,428">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname NYC&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 2.2.2.2 255.255.255.0&#xD;
+!&#xD;
+interface G0/1&#xD;
+ ip address 192.168.12.2 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+interface G0/2&#xD;
+ ip address 192.168.23.2 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="Seattle" type="SIMPLE" subtype="IOSv" location="535,427">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname Seattle&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 3.3.3.3 255.255.255.0&#xD;
+!&#xD;
+interface G0/1&#xD;
+ ip address 192.168.13.3 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+interface G0/2&#xD;
+ ip address 192.168.23.3 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]">
+        <extensions>
+            <entry key="description" type="String">Link from R1 port FastEthernet0/0 to R2 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from R1 port FastEthernet1/0 to R3 port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[2]" src="/virl:topology/virl:node[2]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from R2 port FastEthernet1/0 to R3 port FastEthernet1/0</entry>
+        </extensions>
+    </connection>
+</topology>

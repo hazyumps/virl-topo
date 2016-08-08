@@ -1,0 +1,29 @@
+!
+hostname Luke
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 172.16.1.55 255.255.255.0
+ shutdown 
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 1
+ bgp log-neighbor-changes
+ network 1.1.1.0 mask 255.255.255.0
+ network 192.168.12.0
+ neighbor 192.168.12.2 remote-as 2
+!

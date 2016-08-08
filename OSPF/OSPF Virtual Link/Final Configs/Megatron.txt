@@ -1,0 +1,27 @@
+!
+hostname Megatron
+!
+!
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.61 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.23.3 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ area 1 virtual-link 1.1.1.1
+ network 3.3.3.3 0.0.0.0 area 0
+ network 192.168.23.0 0.0.0.255 area 1
+!

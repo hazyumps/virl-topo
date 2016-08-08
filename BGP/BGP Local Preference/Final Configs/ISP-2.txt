@@ -1,0 +1,37 @@
+!
+hostname ISP-2
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 7.7.7.7 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.56 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.47.7 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.67.7 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router bgp 400
+ bgp log-neighbor-changes
+ network 7.7.7.0 mask 255.255.255.0
+ network 192.168.47.0
+ network 192.168.67.0
+ neighbor 192.168.47.4 remote-as 100
+ neighbor 192.168.67.6 remote-as 300
+!         

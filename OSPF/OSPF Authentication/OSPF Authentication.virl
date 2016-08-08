@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.9" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">flat</entry>
+    </extensions>
+    <node name="Elephant" type="SIMPLE" subtype="IOSv" location="194,95">
+        <extensions>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">hostname Elephant&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 1.1.1.1 255.255.255.0&#xD;
+!&#xD;
+interface g0/1&#xD;
+ ip address 192.168.12.1 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+no ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="Giraffe" type="SIMPLE" subtype="IOSv" location="201,282">
+        <extensions>
+            <entry key="description" type="String">Router</entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname Giraffe&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 2.2.2.2 255.255.255.0&#xD;
+!&#xD;
+interface g0/1&#xD;
+ ip address 192.168.12.2 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+interface g0/2&#xD;
+ ip address 192.168.23.2 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+no ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="Gorilla" type="SIMPLE" subtype="IOSv" location="377,467">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="description" type="String">Router c3600</entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname Gorilla&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 3.3.3.3 255.255.255.0&#xD;
+!&#xD;
+interface g0/1&#xD;
+ ip address 192.168.23.3 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+interface g0/2&#xD;
+ ip address 192.168.34.3 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+no ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="Lion" type="SIMPLE" subtype="IOSv" location="574,469">
+        <extensions>
+            <entry key="type" type="String">C3600</entry>
+            <entry key="description" type="String">Router c3600</entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!&#xD;
+!&#xD;
+version 12.4&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+!&#xD;
+hostname Lion&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+memory-size iomem 5&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+! &#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 4.4.4.4 255.255.255.0&#xD;
+!&#xD;
+interface g0/1&#xD;
+ ip address 192.168.34.4 255.255.255.0&#xD;
+ duplex auto&#xD;
+ speed auto&#xD;
+!&#xD;
+no ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+line aux 0&#xD;
+line vty 0 4&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="SW1" type="SIMPLE" subtype="Unmanaged Switch" location="209,474">
+        <extensions>
+            <entry key="type" type="String">EthernetSwitch</entry>
+            <entry key="description" type="String">Ethernet switch</entry>
+        </extensions>
+        <interface id="1" name="link2"/>
+        <interface id="2" name="link3"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]">
+        <extensions>
+            <entry key="description" type="String">Link from Elephant port FastEthernet0/0 to Giraffe port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from Giraffe port FastEthernet1/0 to SW1 port 1</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[1]">
+        <extensions>
+            <entry key="description" type="String">Link from Gorilla port FastEthernet0/0 to SW1 port 2</entry>
+        </extensions>
+    </connection>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[2]">
+        <extensions>
+            <entry key="description" type="String">Link from Gorilla port FastEthernet1/0 to Lion port FastEthernet0/0</entry>
+        </extensions>
+    </connection>
+</topology>

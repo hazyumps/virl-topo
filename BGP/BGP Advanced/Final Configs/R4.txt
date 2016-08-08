@@ -1,0 +1,81 @@
+!
+hostname R4
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.28 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.34.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.24.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 192.168.45.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ ip address 192.168.46.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 4.4.4.4
+ network 4.4.4.0 0.0.0.255 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+!
+router bgp 10
+ bgp log-neighbor-changes
+ bgp confederation identifier 300
+ bgp confederation peers 20 
+ redistribute connected
+ neighbor 5.5.5.5 remote-as 10
+ neighbor 5.5.5.5 update-source Loopback0
+ neighbor 192.168.24.2 remote-as 100
+ neighbor 192.168.34.3 remote-as 100
+ neighbor 192.168.34.3 route-map PATH_TO_R1 in
+ neighbor 192.168.46.6 remote-as 200
+ neighbor 192.168.46.6 route-map DENY_R1_Lo1 out
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 2.2.2.2 255.255.255.255 192.168.24.2
+!
+!
+route-map DENY_R1_Lo1 deny 10
+ match ip address 20
+!
+route-map DENY_R1_Lo1 permit 20
+!
+route-map PATH_TO_R1 permit 10
+ match ip address 10
+ set weight 100
+!
+route-map PATH_TO_R1 permit 20
+!
+!
+access-list 10 permit 172.16.1.0 0.0.0.255
+access-list 20 permit 172.16.1.0 0.0.0.255
+!

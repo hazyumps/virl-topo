@@ -1,0 +1,39 @@
+!
+hostname Gorilla
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown 
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.23.3 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key cisco
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.34.3 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 3.3.3.3
+ area 1 virtual-link 2.2.2.2 authentication message-digest
+ area 1 virtual-link 2.2.2.2 message-digest-key 1 md5 cisco
+ network 3.3.3.0 0.0.0.255 area 1
+ network 192.168.23.0 0.0.0.255 area 1
+ network 192.168.34.0 0.0.0.255 area 2
+!
