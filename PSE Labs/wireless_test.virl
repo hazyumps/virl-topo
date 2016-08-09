@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <extensions>
+        <entry key="AutoNetkit.enable_cdp" type="Boolean">true</entry>
+        <entry key="management_network" type="String">exclusive</entry>
+    </extensions>
+    <node name="mls-1" type="SIMPLE" subtype="IOSvL2" location="513,222">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="config" type="String">! IOSvL2 Config generated on 2016-08-09 16:45&#xD;
+! by autonetkit_0.23.3&#xD;
+!&#xD;
+version 15.2&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+service compress-config&#xD;
+no service config&#xD;
+enable password cisco&#xD;
+ip classless&#xD;
+ip subnet-zero&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+line vty 0 4&#xD;
+transport input ssh telnet&#xD;
+exec-timeout 720 0&#xD;
+password cisco&#xD;
+login&#xD;
+!&#xD;
+line con 0&#xD;
+password cisco&#xD;
+!&#xD;
+hostname mls-1&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+!&#xD;
+vtp domain virl.lab&#xD;
+vtp mode transparent&#xD;
+!&#xD;
+vlan 2552&#xD;
+  name mgmt_vlan&#xD;
+vlan 2553&#xD;
+  name wlan_lab&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+no ipv6 cef&#xD;
+!&#xD;
+!&#xD;
+spanning-tree mode pvst&#xD;
+spanning-tree extend system-id&#xD;
+!&#xD;
+vlan internal allocation policy ascending&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+vrf definition Mgmt-intf&#xD;
+!&#xD;
+ address-family ipv4&#xD;
+ exit-address-family&#xD;
+ !&#xD;
+ address-family ipv6&#xD;
+ exit-address-family&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+  description Loopback&#xD;
+!&#xD;
+interface GigabitEthernet0/0&#xD;
+  description OOB management&#xD;
+  ! Configured on launch&#xD;
+  no switchport&#xD;
+  vrf forwarding Mgmt-intf&#xD;
+  no ip address&#xD;
+  shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+  description to rtr-1_p2p&#xD;
+  no switchport&#xD;
+  ip address 10.2.255.225 255.255.255.252&#xD;
+  no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/2&#xD;
+  description GigabitEthernet0/2&#xD;
+  shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/3&#xD;
+  description GigabitEthernet0/3&#xD;
+  no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet1/0&#xD;
+  description to trunk_in&#xD;
+  switchport trunk encapsulation dot1q&#xD;
+  switchport mode trunk&#xD;
+  no shutdown&#xD;
+!&#xD;
+!&#xD;
+ip forward-protocol nd&#xD;
+!&#xD;
+no ip http server&#xD;
+no ip http secure-server&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+        </entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="public_wan" type="ASSET" subtype="FLAT" location="509,67">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="trunk_in" type="ASSET" subtype="FLAT" location="517,321">
+        <extensions>
+            <entry key="host_network" type="String">trunk_all</entry>
+        </extensions>
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="rtr-1" type="SIMPLE" subtype="IOSv" location="509,148" ipv4="192.168.0.1">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="config" type="String">! IOS Config generated on 2016-08-09 16:45&#xD;
+! by autonetkit_0.23.3&#xD;
+!&#xD;
+hostname rtr-1&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+vrf definition Mgmt-intf&#xD;
+!&#xD;
+ address-family ipv4&#xD;
+ exit-address-family&#xD;
+ !&#xD;
+ address-family ipv6&#xD;
+ exit-address-family&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+!&#xD;
+!&#xD;
+ip cef&#xD;
+ipv6 unicast-routing&#xD;
+ipv6 cef&#xD;
+!&#xD;
+!&#xD;
+service timestamps debug datetime msec&#xD;
+service timestamps log datetime msec&#xD;
+no service password-encryption&#xD;
+no service config&#xD;
+enable password cisco&#xD;
+ip classless&#xD;
+ip subnet-zero&#xD;
+no ip domain lookup&#xD;
+ip domain name virl.info&#xD;
+crypto key generate rsa modulus 768&#xD;
+ip ssh server algorithm authentication password&#xD;
+username cisco privilege 15 secret cisco&#xD;
+line vty 0 4&#xD;
+ transport input ssh telnet&#xD;
+ exec-timeout 720 0&#xD;
+ password cisco&#xD;
+ login local&#xD;
+line con 0&#xD;
+ password cisco&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+  description Loopback&#xD;
+  ip address 192.168.0.1 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/0&#xD;
+  description OOB Management&#xD;
+  vrf forwarding Mgmt-intf&#xD;
+  ! Configured on launch&#xD;
+  no ip address&#xD;
+  cdp enable&#xD;
+  duplex full&#xD;
+  speed auto&#xD;
+  no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+  description to public_wan&#xD;
+  ip address 10.2.255.114 255.255.255.240&#xD;
+  cdp enable&#xD;
+  duplex full&#xD;
+  speed auto&#xD;
+  no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/2&#xD;
+  description to mls-1&#xD;
+  ip address 10.2.255.226 255.255.255.252&#xD;
+  cdp enable&#xD;
+  duplex full&#xD;
+  speed auto&#xD;
+  no shutdown&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+router ospf 1&#xD;
+  network 10.0.0.0 0.255.255.255 area 0&#xD;
+  redistribute bgp 25541&#xD;
+  redistribute connected&#xD;
+  default-information originate&#xD;
+  log-adjacency-changes&#xD;
+  passive-interface default&#xD;
+  no passive-interface GigabitEthernet0/2&#xD;
+!&#xD;
+router bgp 25541&#xD;
+ neighbor 10.2.255.113 remote-as 2554&#xD;
+ redistribute ospf 1&#xD;
+!&#xD;
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2" ipv4="10.0.0.5" netPrefixLenV4="30"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[4]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+</topology>

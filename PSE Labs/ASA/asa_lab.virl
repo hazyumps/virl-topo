@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">exclusive</entry>
+        <entry key="AutoNetkit.enable_cdp" type="Boolean">true</entry>
+    </extensions>
+    <node name="rtr-ext" type="SIMPLE" subtype="IOSv" location="339,135">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="mls-int-1" type="SIMPLE" subtype="IOSvL2" location="227,316">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="mls-int-2" type="SIMPLE" subtype="IOSvL2" location="447,313">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="rtr-dmz" type="SIMPLE" subtype="IOSv" location="747,244">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="srv-int" type="SIMPLE" subtype="server" location="343,487">
+        <interface id="0" name="eth1"/>
+    </node>
+    <node name="wgs-int" type="SIMPLE" subtype="IOSvL2" location="341,395">
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="srv-dmz" type="SIMPLE" subtype="server" location="882,244">
+        <interface id="0" name="eth1"/>
+    </node>
+    <node name="WAN" type="ASSET" subtype="FLAT" location="337,59">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="asa_ext" type="ASSET" subtype="FLAT" location="340,184">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="asa_int-1" type="ASSET" subtype="FLAT" location="226,250">
+        <extensions>
+            <entry key="host_network" type="String">flat-1</entry>
+        </extensions>
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="asa_int-2" type="ASSET" subtype="FLAT" location="447,244">
+        <extensions>
+            <entry key="host_network" type="String">flat-1</entry>
+        </extensions>
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="dmz" type="ASSET" subtype="FLAT" location="639,243">
+        <extensions>
+            <entry key="host_network" type="String">dmz</entry>
+        </extensions>
+        <interface id="0" name="link0"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[8]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[10]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[11]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[3]" src="/virl:topology/virl:node[2]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[6]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[12]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[1]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+</topology>

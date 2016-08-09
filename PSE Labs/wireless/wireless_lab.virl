@@ -8,7 +8,7 @@
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 13:46:40 UTC Tue Aug 9 2016
+! Last configuration change at 15:43:30 UTC Tue Aug 9 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -87,7 +87,7 @@ interface Loopback0
 interface GigabitEthernet0/0
  description OOB Management
  vrf forwarding Mgmt-intf
- no ip address
+ ip address 10.255.0.5 255.255.0.0
  shutdown
  duplex full
  speed auto
@@ -197,7 +197,7 @@ end</entry>
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 13:33:06 UTC Tue Aug 9 2016
+! Last configuration change at 15:42:49 UTC Tue Aug 9 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -301,12 +301,11 @@ interface GigabitEthernet0/1
  description to rtr-1
  no switchport
  ip address 10.2.255.226 255.255.255.252
- duplex full
- no negotiation auto
+ negotiation auto
 !
 interface GigabitEthernet1/0
  description to Trunk_to_WLC_(ALL_VLAN)
- switchport trunk allowed vlan 2553
+ switchport trunk allowed vlan 2552,2553
  switchport trunk encapsulation dot1q
  switchport mode trunk
  media-type rj45
@@ -333,6 +332,7 @@ router ospf 1
  passive-interface default
  no passive-interface GigabitEthernet0/3
  no passive-interface GigabitEthernet0/1
+ no passive-interface Vlan2552
  network 10.0.0.0 0.255.255.255 area 0
 !
 ip forward-protocol nd
@@ -396,7 +396,7 @@ end</entry>
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 13:45:34 UTC Tue Aug 9 2016
+! Last configuration change at 15:43:21 UTC Tue Aug 9 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -523,6 +523,7 @@ router ospf 1
  passive-interface default
  no passive-interface GigabitEthernet0/3
  no passive-interface GigabitEthernet0/1
+ no passive-interface Vlan2552
  network 10.0.0.0 0.255.255.255 area 0
 !
 ip forward-protocol nd
@@ -585,7 +586,7 @@ end</entry>
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 13:45:10 UTC Tue Aug 9 2016
+! Last configuration change at 15:43:21 UTC Tue Aug 9 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -674,6 +675,7 @@ interface GigabitEthernet0/3
  switchport trunk allowed vlan 2552
  switchport trunk encapsulation dot1q
  switchport mode trunk
+ shutdown
  media-type rj45
  duplex full
  no negotiation auto
@@ -745,15 +747,9 @@ end</entry>
     <node name="Public LAN (v2554)" type="ASSET" subtype="FLAT" location="479,57">
         <interface id="0" name="link0"/>
     </node>
-    <node name="Trunk to WLC (ALL VLAN)" type="ASSET" subtype="FLAT" location="240,298">
+    <node name="Trunk All" type="ASSET" subtype="FLAT" location="497,497">
         <extensions>
             <entry key="host_network" type="String">trunk_all</entry>
-        </extensions>
-        <interface id="0" name="link0"/>
-    </node>
-    <node name="To WAP (v2552)" type="ASSET" subtype="FLAT" location="497,497">
-        <extensions>
-            <entry key="host_network" type="String">virl_internal</entry>
         </extensions>
         <interface id="0" name="link0"/>
     </node>
@@ -764,6 +760,5 @@ end</entry>
     <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
     <connection dst="/virl:topology/virl:node[3]/virl:interface[3]" src="/virl:topology/virl:node[2]/virl:interface[3]"/>
     <connection dst="/virl:topology/virl:node[1]/virl:interface[3]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
-    <connection dst="/virl:topology/virl:node[2]/virl:interface[4]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
-    <connection dst="/virl:topology/virl:node[4]/virl:interface[3]" src="/virl:topology/virl:node[7]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[3]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
 </topology>
