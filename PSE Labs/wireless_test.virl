@@ -4,11 +4,11 @@
         <entry key="AutoNetkit.enable_cdp" type="Boolean">true</entry>
         <entry key="management_network" type="String">exclusive</entry>
     </extensions>
-    <node name="mls-1" type="SIMPLE" subtype="IOSvL2" location="513,222">
+    <node name="mls-1" type="SIMPLE" subtype="IOSvL2" location="516,262">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 19:32:34 UTC Tue Aug 9 2016
+! Last configuration change at 23:22:22 UTC Wed Aug 10 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -111,6 +111,7 @@ interface GigabitEthernet0/1
 !
 interface GigabitEthernet1/0
  description to trunk_in
+ switchport trunk allowed vlan 2552,2553
  switchport trunk encapsulation dot1q
  switchport mode trunk
  media-type rj45
@@ -126,9 +127,6 @@ interface Vlan2553
  description wlab_gw
  ip address 10.2.255.97 255.255.255.240
 !
-interface Vlan2554
- ip address 10.2.255.114 255.255.255.240
-!
 router ospf 1
  redistribute connected subnets
  passive-interface default
@@ -140,7 +138,6 @@ ip forward-protocol nd
 no ip http server
 no ip http secure-server
 !
-ip route 0.0.0.0 0.0.0.0 10.2.255.113
 !
 !
 !
@@ -193,20 +190,20 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="public_wan" type="ASSET" subtype="FLAT" location="509,67">
+    <node name="public_wan" type="ASSET" subtype="FLAT" location="512,82">
         <interface id="0" name="link0"/>
     </node>
-    <node name="trunk_in" type="ASSET" subtype="FLAT" location="517,321">
+    <node name="trunk_in" type="ASSET" subtype="FLAT" location="517,375">
         <extensions>
             <entry key="host_network" type="String">trunk_all</entry>
         </extensions>
         <interface id="0" name="link0"/>
     </node>
-    <node name="rtr-1" type="SIMPLE" subtype="IOSv" location="509,148" ipv4="192.168.0.1">
+    <node name="rtr-1" type="SIMPLE" subtype="IOSv" location="515,166" ipv4="192.168.0.1">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="config" type="String">!
-! Last configuration change at 19:33:09 UTC Tue Aug 9 2016
+! Last configuration change at 23:24:03 UTC Wed Aug 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -293,7 +290,6 @@ interface GigabitEthernet0/0
 interface GigabitEthernet0/1
  description ext_acc
  ip address 10.2.255.114 255.255.255.240
- shutdown
  duplex full
  speed auto
  media-type rj45
@@ -301,7 +297,6 @@ interface GigabitEthernet0/1
 interface GigabitEthernet0/2
  description to mls-1
  ip address 10.2.255.226 255.255.255.252
- shutdown
  duplex full
  speed auto
  media-type rj45
